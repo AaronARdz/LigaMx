@@ -2,7 +2,7 @@ package aaron.masterclass;
 
 import java.util.ArrayList;
 
-public class Team<T extends Player> {
+public class Team<T extends Player> implements Comparable<Team<T>> {
     //public class Team<T extends Player & manager & coach> //en caso de que queramos agregar diferentes extensiones de un equipo
     private String name;
     int played = 0;
@@ -59,7 +59,7 @@ public class Team<T extends Player> {
         }
     }
 
-    public void ranking() {
+    public void rankingIndivual() {
         System.out.println(this.name + " Tiene " + (won * 3 + tied) + " Puntos");
         if (won > 1){
             System.out.println(won + " : Partidos Ganados");
@@ -72,7 +72,20 @@ public class Team<T extends Player> {
             System.out.println(tied + " : Partido empatado");
         }
 
-
+    }
+    public int ranking(){
+        return (won * 3 + tied);
     }
 
+    @Override
+    public int compareTo(Team<T> team) {
+        if (this.ranking() > team.ranking()){
+            return -1;
+        } else if (this.ranking() < team.ranking()){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
+

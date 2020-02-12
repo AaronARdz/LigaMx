@@ -38,14 +38,19 @@ public class Main {
         tigres.matchResult(rayados,1,1);
         rayados.matchResult(america,2,2);
 
+        System.out.println("Rankings: ");
+        tigres.rankingIndivual();
+        rayados.rankingIndivual();
+        chivas.rankingIndivual();
 
-        tigres.ranking();
-        rayados.ranking();
-        chivas.ranking();
+        System.out.println(tigres.compareTo(rayados));
 
-
-
-
+        League<Team<SoccerPlayer>> ligamx = new League<>("Liga Mx");
+        ligamx.add(tigres);
+        ligamx.add(rayados);
+        ligamx.add(chivas);
+        ligamx.add(america);
+        ligamx.showLeagueTable();
 
 
 
